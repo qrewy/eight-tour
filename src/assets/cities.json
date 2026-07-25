@@ -1,0 +1,754 @@
+{
+  "source": "Вставленный текст(2).txt",
+  "cities_count": 24,
+  "cities": [
+    {
+      "city": "ТУЛА",
+      "date": "01.10",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=tula"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356742#s=3760320"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/18"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_tula"
+        }
+      ]
+    },
+    {
+      "city": "ВОРОНЕЖ",
+      "date": "02.10",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=voronezh"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356750#s=3760321"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/20"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_vrn"
+        }
+      ]
+    },
+    {
+      "city": "СТАВРОПОЛЬ",
+      "date": "04.10",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=stavropol"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356754#s=3760322"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/22"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_stvrpl"
+        }
+      ]
+    },
+    {
+      "city": "УФА",
+      "date": "15.10",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=ufa"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356764#s=3760323"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/24"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_ufaa"
+        }
+      ]
+    },
+    {
+      "city": "ОРЕНБУРГ",
+      "date": "16.10",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=orenburg"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356770#s=3760324"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/26"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_oren"
+        }
+      ]
+    },
+    {
+      "city": "САМАРА",
+      "date": "18.10",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=samara"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356775#s=3760326"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/28"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_smr"
+        }
+      ]
+    },
+    {
+      "city": "ВЛАДИВОСТОК",
+      "date": "21-22.10",
+      "links": [
+        {
+          "label": "21.10",
+          "text": "21.10",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=vladivostok1"
+        },
+        {
+          "label": "22.10",
+          "text": "22.10",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=vladivostok2"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356782#s=3760328"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/52"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_vdk"
+        }
+      ]
+    },
+    {
+      "city": "ХАБАРОВСК",
+      "date": "23.10",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=khabarovsk"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356789#s=3760330"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/30"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_khbsk"
+        }
+      ]
+    },
+    {
+      "city": "БЛАГОВЕЩЕНСК",
+      "date": "24.10",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=blagoveshchensk"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356803#s=3760331"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/32"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_blgvsk"
+        }
+      ]
+    },
+    {
+      "city": "ЯРОСЛАВЛЬ",
+      "date": "28.10",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=yaroslavl"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356807#s=3760332"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/34"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_yarl"
+        }
+      ]
+    },
+    {
+      "city": "Н.НОВГОРОД",
+      "date": "29.10",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=nnovgorod"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356810#s=3760333"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/36"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_nn"
+        }
+      ]
+    },
+    {
+      "city": "КАЗАНЬ",
+      "date": "30.10",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=kazan"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356819#s=3760334"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/78"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_kzn"
+        }
+      ]
+    },
+    {
+      "city": "КАЛИНИНГРАД",
+      "date": "01.11",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=kaliningrad"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356826#s=3760335"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/38"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_kgd"
+        }
+      ]
+    },
+    {
+      "city": "ИРКУТСК",
+      "date": "07.11",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=irkutsk"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=irkutsk"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourr/4"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/frtn812_irkutsk"
+        }
+      ]
+    },
+    {
+      "city": "НОВОСИБИРСК",
+      "date": "12.11",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=novosibirsk"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356829#s=3760336"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/40"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_nvsb"
+        }
+      ]
+    },
+    {
+      "city": "БАРНАУЛ",
+      "date": "13.11",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=barnaul"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356831#s=3760337"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/42"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_brnl"
+        }
+      ]
+    },
+    {
+      "city": "КРАСНОЯРСК",
+      "date": "15.11",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=krasnoyarsk"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356835#s=3760338"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/44"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_krsk"
+        }
+      ]
+    },
+    {
+      "city": "ТЮМЕНЬ",
+      "date": "12.12",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=tyumen"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=tyumen"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourr/6"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/frtn812_tyumen"
+        }
+      ]
+    },
+    {
+      "city": "ЕКАТЕРИНБУРГ",
+      "date": "13.12",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=ekaterinburg"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356847#s=3760339"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/46"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_ektb"
+        }
+      ]
+    },
+    {
+      "city": "РОСТОВ",
+      "date": "24.12",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=rostov"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=rostov"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourr/8"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/frtn812_rnd"
+        }
+      ]
+    },
+    {
+      "city": "КРАСНОДАР",
+      "date": "25.12",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=krasnodar"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=krasnodar"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourr/11"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/frtn812_krnd"
+        }
+      ]
+    },
+    {
+      "city": "САРАТОВ",
+      "date": "30.01",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=saratov"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=saratov"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourr/13"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/frtn812_saratov"
+        }
+      ]
+    },
+    {
+      "city": "МОСКВА",
+      "date": "16.01",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=moscow"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356850#s=3760340"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/48"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_msc"
+        }
+      ]
+    },
+    {
+      "city": "САНКТ-ПЕТЕРБУРГ",
+      "date": "23.01",
+      "links": [
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "telegram",
+          "url": "https://t.me/fortuna812tourbot?start=spb"
+        },
+        {
+          "label": "Бронь",
+          "text": "Бронь",
+          "platform": "vk",
+          "url": "https://vk.ru/app5898182_-240356858#s=3760341"
+        },
+        {
+          "label": "Чат",
+          "text": null,
+          "platform": "telegram",
+          "url": "https://t.me/fleekmedia_fortuna812/50"
+        },
+        {
+          "label": "Группа",
+          "text": null,
+          "platform": "vk",
+          "url": "https://vk.ru/fortuna812_spbg"
+        }
+      ]
+    }
+  ],
+  "other_links": [
+    {
+      "label": "812 Booking",
+      "url": "https://t.me/booking_812"
+    },
+    {
+      "label": "Fleek Media",
+      "url": "https://t.me/wearefleekmedia"
+    },
+    {
+      "label": "Atlanta Act",
+      "url": "https://t.me/atlantaact"
+    },
+    {
+      "label": "812",
+      "url": "https://t.me/eightofeight"
+    },
+    {
+      "label": "dev by sn",
+      "url": "https://t.me/sznsn"
+    }
+  ]
+}
