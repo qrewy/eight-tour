@@ -181,6 +181,144 @@ img {
   will-change: opacity;
 }
 
+.jpeg-damage {
+  position: fixed;
+  z-index: 1100;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.jpeg-damage::before,
+.jpeg-damage::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  opacity: 0;
+  will-change: opacity, transform, background-position;
+}
+
+.jpeg-damage::before {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgb(174 69 226 / 18%) 0 2.2vw,
+      transparent 2.2vw 4.8vw,
+      rgb(43 166 255 / 12%) 4.8vw 6.1vw,
+      transparent 6.1vw 9.5vw
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 3.2vh,
+      rgb(255 255 255 / 8%) 3.2vh 4.1vh,
+      transparent 4.1vh 8.4vh
+    );
+  background-size:
+    113% 100%,
+    100% 117%;
+  mix-blend-mode: screen;
+  animation: jpeg-block-map 3.1s steps(1, end) infinite;
+}
+
+.jpeg-damage::after {
+  top: 41%;
+  bottom: auto;
+  height: 8vh;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0 7%,
+      rgb(255 35 132 / 20%) 7% 19%,
+      transparent 19% 31%,
+      rgb(68 188 255 / 18%) 31% 47%,
+      transparent 47% 63%,
+      rgb(173 73 220 / 20%) 63% 78%,
+      transparent 78%
+    );
+  backdrop-filter: contrast(1.45) saturate(1.8) hue-rotate(9deg);
+  mix-blend-mode: screen;
+  animation: jpeg-wide-tear 4.4s steps(1, end) -1.3s infinite;
+}
+
+.jpeg-damage__slice {
+  position: absolute;
+  left: -3%;
+  width: 106%;
+  opacity: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgb(185 73 230 / 22%) 0 4vw,
+      transparent 4vw 7vw,
+      rgb(49 176 255 / 16%) 7vw 9vw,
+      transparent 9vw 14vw
+    );
+  backdrop-filter: contrast(1.4) saturate(1.65);
+  mix-blend-mode: screen;
+  will-change: opacity, transform;
+  animation: jpeg-slice-shift 3.7s steps(1, end) infinite;
+}
+
+.jpeg-damage__slice--one {
+  top: 12%;
+  height: 3.2vh;
+  animation-delay: -0.4s;
+  clip-path: polygon(
+    0 0,
+    17% 0,
+    17% 100%,
+    31% 100%,
+    31% 0,
+    55% 0,
+    55% 100%,
+    76% 100%,
+    76% 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+.jpeg-damage__slice--two {
+  top: 29%;
+  height: 6.4vh;
+  animation-delay: -2.1s;
+  filter: hue-rotate(28deg);
+}
+
+.jpeg-damage__slice--three {
+  top: 51%;
+  height: 2.1vh;
+  animation-delay: -1.2s;
+  clip-path: polygon(
+    0 0,
+    24% 0,
+    24% 100%,
+    43% 100%,
+    43% 0,
+    68% 0,
+    68% 100%,
+    91% 100%,
+    91% 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+.jpeg-damage__slice--four {
+  top: 68%;
+  height: 8vh;
+  animation-delay: -3.2s;
+  filter: hue-rotate(-22deg);
+}
+
+.jpeg-damage__slice--five {
+  top: 84%;
+  height: 3.7vh;
+  animation-delay: -2.7s;
+}
+
 .poster__canvas {
   position: absolute;
   top: 0;
@@ -752,6 +890,87 @@ img {
   }
 }
 
+@keyframes jpeg-block-map {
+  0%,
+  72%,
+  83%,
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+
+  73% {
+    background-position:
+      -2vw 0,
+      0 1vh;
+    opacity: 0.28;
+    transform: translate(-0.45vw, 0.2vh);
+  }
+
+  76% {
+    background-position:
+      3vw 0,
+      0 -2vh;
+    opacity: 0.12;
+    transform: translate(0.7vw, -0.1vh);
+  }
+
+  79% {
+    opacity: 0.34;
+    transform: translate(-0.2vw, 0);
+  }
+}
+
+@keyframes jpeg-wide-tear {
+  0%,
+  78%,
+  89%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  79% {
+    opacity: 0.62;
+    transform: translateX(-1.2vw) scaleX(1.025);
+  }
+
+  82% {
+    opacity: 0.28;
+    transform: translateX(0.8vw) scaleX(0.99);
+  }
+
+  86% {
+    opacity: 0.48;
+    transform: translateX(-0.35vw);
+  }
+}
+
+@keyframes jpeg-slice-shift {
+  0%,
+  80%,
+  91%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  81% {
+    opacity: 0.68;
+    transform: translateX(-1.4vw);
+  }
+
+  84% {
+    opacity: 0.24;
+    transform: translateX(1vw);
+  }
+
+  87% {
+    opacity: 0.52;
+    transform: translateX(-0.55vw);
+  }
+}
+
 @keyframes boot-line-in {
   from {
     opacity: 0;
@@ -774,5 +993,12 @@ img {
   .boot-loader__line,
   .boot-loader__cursor {
     animation: none;
+  }
+
+  .jpeg-damage::before,
+  .jpeg-damage::after,
+  .jpeg-damage__slice {
+    animation: none;
+    opacity: 0;
   }
 }

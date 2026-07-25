@@ -331,7 +331,15 @@ function App() {
         aria-hidden={bootVisible}
         inert={bootVisible}
       >
-      <div className="poster__canvas">
+        <div className="jpeg-damage" aria-hidden="true">
+          <span className="jpeg-damage__slice jpeg-damage__slice--one" />
+          <span className="jpeg-damage__slice jpeg-damage__slice--two" />
+          <span className="jpeg-damage__slice jpeg-damage__slice--three" />
+          <span className="jpeg-damage__slice jpeg-damage__slice--four" />
+          <span className="jpeg-damage__slice jpeg-damage__slice--five" />
+        </div>
+
+        <div className="poster__canvas">
         <Marquee position="top" />
 
         <section className="visual" aria-label="FORTUNA 812">
