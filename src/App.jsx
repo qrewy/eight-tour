@@ -24,6 +24,15 @@ const featuredNames = new Set(['МОСКВА', 'САНКТ-ПЕТЕРБУРГ'])
 const regularCities = cities.filter(({ city }) => !featuredNames.has(city))
 const featuredCities = cities.filter(({ city }) => featuredNames.has(city))
 const mobileCities = [...featuredCities, ...regularCities]
+const fortunaLetters = [
+  { letter: 'f', parts: ['f'] },
+  { letter: 'o', parts: ['o-outer', 'o-inner'] },
+  { letter: 'r', parts: ['r-outer', 'r-inner'] },
+  { letter: 't', parts: ['t', 't-loop-left', 't-loop-right'] },
+  { letter: 'u', parts: ['u'] },
+  { letter: 'n', parts: ['n'] },
+  { letter: 'a', parts: ['a-outer', 'a-inner'] },
+]
 const middleIndex = Math.ceil(regularCities.length / 2)
 
 const marqueeItems = Array.from({ length: 8 }, (_, index) => (
@@ -333,14 +342,6 @@ function App() {
         aria-hidden={bootVisible}
         inert={bootVisible}
       >
-        <div className="jpeg-damage" aria-hidden="true">
-          <span className="jpeg-damage__slice jpeg-damage__slice--one" />
-          <span className="jpeg-damage__slice jpeg-damage__slice--two" />
-          <span className="jpeg-damage__slice jpeg-damage__slice--three" />
-          <span className="jpeg-damage__slice jpeg-damage__slice--four" />
-          <span className="jpeg-damage__slice jpeg-damage__slice--five" />
-        </div>
-
         <div className="poster__canvas">
         <Marquee position="top" />
 
@@ -358,6 +359,26 @@ function App() {
             alt="FORTUNA 812"
             draggable={false}
           />
+          <div
+            className={`visual__letter-glows${bootVisible ? '' : ' is-active'}`}
+            aria-hidden="true"
+          >
+            {fortunaLetters.map(({ letter, parts }) => (
+              <svg
+                className={`visual__letter-glow visual__letter-glow--${letter}`}
+                viewBox="0 0 1183 1330"
+                focusable="false"
+                key={letter}
+              >
+                {parts.map((part) => (
+                  <use
+                    href={`${mainArtwork}#fortuna-${part}`}
+                    key={part}
+                  />
+                ))}
+              </svg>
+            ))}
+          </div>
           <div className="portrait">
             <img
               className="portrait__image"
