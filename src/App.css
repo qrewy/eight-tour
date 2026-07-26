@@ -498,28 +498,39 @@ img {
 }
 
 .dates li {
-  display: grid;
-  align-items: baseline;
-  gap: clamp(4px, 1vw, 18px);
   margin: 0 0 0.6svh;
   font-size: min(1.85vw, 3.35svh);
   line-height: 1.1;
   white-space: nowrap;
 }
 
+.city-link {
+  display: grid;
+  align-items: baseline;
+  gap: clamp(4px, 1vw, 18px);
+  color: inherit;
+  text-decoration: none;
+}
+
 .dates--right li {
-  grid-template-columns: 24% minmax(0, 1fr) 17%;
   transform: translateX(var(--v-offset-negative));
   text-align: right;
 }
 
 .dates--left li {
-  grid-template-columns: 17% minmax(0, 1fr) 24%;
   transform: translateX(var(--v-offset));
   text-align: left;
 }
 
-.dates--right .booking {
+.dates--right .city-link {
+  grid-template-columns: 24% minmax(0, 1fr) 17%;
+}
+
+.dates--left .city-link {
+  grid-template-columns: 17% minmax(0, 1fr) 24%;
+}
+
+.dates--right .booking-label {
   justify-self: end;
 }
 
@@ -539,25 +550,41 @@ img {
   text-align: right;
 }
 
-.dates--left .booking {
+.dates--left .booking-label {
   order: 3;
   justify-self: start;
   text-align: left;
 }
 
-.booking {
+.booking-label {
+  padding: 0 0.3em;
   color: #9e4ed3;
-  text-decoration: none;
-  transition: color 180ms ease, transform 180ms ease;
+  line-height: 1.05;
+  background: #13001c;
+  border-radius: 0;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
 }
 
-.booking:hover {
-  color: #f2f2f2;
+.city-link .city-name,
+.city-link time {
+  transition: color 180ms ease;
 }
 
-.booking:focus-visible {
+.city-link:hover .booking-label,
+.city-link:hover .city-name,
+.city-link:hover time {
+  color: #d78cff;
+}
+
+.city-link:hover .booking-label {
+  background: #240032;
+}
+
+.city-link:focus-visible {
   outline: 2px solid #9e4ed3;
-  outline-offset: 5px;
+  outline-offset: 3px;
 }
 
 .dates time {
@@ -577,28 +604,43 @@ img {
 }
 
 .featured-city {
-  display: grid;
-  grid-template-columns: 22% 1fr 17%;
-  align-items: baseline;
-  gap: 0.9vw;
   margin-bottom: 1.1svh;
   text-align: center;
   white-space: nowrap;
 }
 
-.featured-city a {
+.featured-city__link {
+  display: grid;
+  grid-template-columns: 22% 1fr 17%;
+  align-items: baseline;
+  gap: 0.9vw;
   color: inherit;
   text-decoration: none;
+}
+
+.featured-city__link .booking-label {
+  justify-self: center;
+  color: inherit;
+}
+
+.featured-city__link .city-name,
+.featured-city__link time {
   transition: color 180ms ease;
 }
 
-.featured-city a:hover {
-  color: #9e4ed3;
+.featured-city__link:hover .booking-label,
+.featured-city__link:hover .city-name,
+.featured-city__link:hover time {
+  color: #d78cff;
 }
 
-.featured-city a:focus-visible {
+.featured-city__link:hover .booking-label {
+  background: #240032;
+}
+
+.featured-city__link:focus-visible {
   outline: 2px solid #fff;
-  outline-offset: 5px;
+  outline-offset: 3px;
 }
 
 .mobile-cities {
@@ -755,31 +797,52 @@ img {
     line-height: 1.1;
   }
 
+  .mobile-city__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+  }
+
   .mobile-city time {
     margin-bottom: 0.4vw;
     color: #f2f2f2;
     font-size: 3.3vw;
+    transition: color 180ms ease;
   }
 
-  .mobile-city > span {
+  .mobile-city .city-name {
     margin-bottom: 2.7vw;
     color: #9e4ed3;
     font-size: 4vw;
     white-space: nowrap;
-  }
-
-  .mobile-city a {
-    color: #f2f2f2;
-    font-size: 3.5vw;
-    text-decoration: none;
     transition: color 180ms ease;
   }
 
-  .mobile-city a:hover {
-    color: #9e4ed3;
+  .mobile-city .booking-label {
+    padding: 0 0.45em;
+    color: #f2f2f2;
+    font-size: 3.5vw;
+    line-height: 1.15;
+    background: #13001c;
+    border-radius: 0;
+    transition:
+      color 180ms ease,
+      background-color 180ms ease;
   }
 
-  .mobile-city a:focus-visible {
+  .mobile-city__link:hover time,
+  .mobile-city__link:hover .city-name,
+  .mobile-city__link:hover .booking-label {
+    color: #d78cff;
+  }
+
+  .mobile-city__link:hover .booking-label {
+    background: #240032;
+  }
+
+  .mobile-city__link:focus-visible {
     outline: 2px solid #fff;
     outline-offset: 4px;
   }

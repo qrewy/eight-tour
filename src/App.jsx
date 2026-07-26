@@ -130,16 +130,16 @@ function CitiesColumn({ items, side }) {
           }}
         >
           <a
-            className="booking"
+            className="city-link"
             href={bookingUrl}
             target="_blank"
             rel="noreferrer"
             aria-label={`Забронировать билет: ${city}, ${date} — Telegram`}
           >
-            БРОНЬ
+            <span className="booking-label">БРОНЬ</span>
+            <span className="city-name">{city}</span>
+            <time>{date}</time>
           </a>
-          <span className="city-name">{city}</span>
-          <time>{date}</time>
         </li>
       ))}
     </ol>
@@ -152,15 +152,16 @@ function FeaturedCities() {
       {featuredCities.map(({ city, date, bookingUrl }) => (
         <div className="featured-city" key={`${city}-${date}`}>
           <a
+            className="featured-city__link"
             href={bookingUrl}
             target="_blank"
             rel="noreferrer"
             aria-label={`Забронировать билет: ${city}, ${date} — Telegram`}
           >
-            БРОНЬ
+            <span className="booking-label">БРОНЬ</span>
+            <span className="city-name">{city}</span>
+            <time>{date}</time>
           </a>
-          <span>{city}</span>
-          <time>{date}</time>
         </div>
       ))}
     </div>
@@ -172,15 +173,16 @@ function MobileCities() {
     <ol className="mobile-cities">
       {mobileCities.map(({ city, date, bookingUrl }) => (
         <li className="mobile-city" key={`${city}-${date}`}>
-          <time>{date}</time>
-          <span>{city}</span>
           <a
+            className="mobile-city__link"
             href={bookingUrl}
             target="_blank"
             rel="noreferrer"
             aria-label={`Забронировать билет: ${city}, ${date} — Telegram`}
           >
-            БРОНЬ
+            <time>{date}</time>
+            <span className="city-name">{city}</span>
+            <span className="booking-label">БРОНЬ</span>
           </a>
         </li>
       ))}
