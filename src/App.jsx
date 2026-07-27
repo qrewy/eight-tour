@@ -2,7 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
 import bar from './assets/svg/82bar.svg'
+import barMobile from './assets/svg/82bar-mobile.svg'
 import mainArtwork from './assets/svg/main.svg'
+import mainArtworkMobile from './assets/svg/main-mobile.svg'
+import oniwi from './assets/svg/oniwi.svg'
 import round from './assets/svg/round.svg'
 import background from './assets/img/bg.png'
 import mister8 from './assets/img/mister8.png'
@@ -28,7 +31,11 @@ const fortunaLetters = [
   { letter: 'f', parts: ['f'] },
   { letter: 'o', parts: ['o-outer', 'o-inner'] },
   { letter: 'r', parts: ['r-outer', 'r-inner'] },
-  { letter: 't', parts: ['t', 't-loop-left', 't-loop-right'] },
+  {
+    letter: 't',
+    parts: ['t'],
+    restParts: ['t', 't-loop-left', 't-loop-right'],
+  },
   { letter: 'u', parts: ['u'] },
   { letter: 'n', parts: ['n'] },
   { letter: 'a', parts: ['a-outer', 'a-inner'] },
@@ -201,6 +208,7 @@ function MobileCities() {
 
 function App() {
   const scrollRef = useRef(null)
+  const letterGlowsRef = useRef(null)
   const moveToScreenRef = useRef(() => {})
   const [bootStep, setBootStep] = useState(1)
   const [bootPhase, setBootPhase] = useState('loading')
@@ -240,6 +248,68 @@ function App() {
       window.clearTimeout(hideTimer)
     }
   }, [])
+
+  useEffect(() => {
+    if (bootVisible) return undefined
+
+    const letters = Array.from(
+      letterGlowsRef.current.querySelectorAll('.visual__letter-glow'),
+    )
+
+    if (letters.length === 0) return undefined
+
+    let timer
+
+    const runRandomFlicker = () => {
+      if (Math.random() < 0.13) {
+        letters.forEach((letter) => {
+          letter.style.opacity = '0'
+        })
+        timer = window.setTimeout(
+          runRandomFlicker,
+          140 + Math.random() * 520,
+        )
+        return
+      }
+
+      let changed = false
+
+      letters.forEach((letter) => {
+        const action = Math.random()
+
+        if (action < 0.2) {
+          letter.style.opacity = String(0.35 + Math.random() * 0.65)
+          changed = true
+        } else if (action < 0.52) {
+          letter.style.opacity = '0'
+          changed = true
+        }
+      })
+
+      if (!changed) {
+        const randomLetter =
+          letters[Math.floor(Math.random() * letters.length)]
+        randomLetter.style.opacity =
+          Math.random() < 0.45
+            ? '0'
+            : String(0.35 + Math.random() * 0.65)
+      }
+
+      timer = window.setTimeout(
+        runRandomFlicker,
+        18 + Math.random() * 115,
+      )
+    }
+
+    timer = window.setTimeout(runRandomFlicker, 120)
+
+    return () => {
+      window.clearTimeout(timer)
+      letters.forEach((letter) => {
+        letter.style.opacity = '0'
+      })
+    }
+  }, [bootVisible])
 
   useEffect(() => {
     const container = scrollRef.current
@@ -346,36 +416,93 @@ function App() {
         <Marquee position="top" />
 
         <section className="visual" aria-label="FORTUNA 812">
-          <img className="visual__bar" src={bar} alt="" draggable={false} />
+          <picture>
+            <source media="(max-width: 700px)" srcSet={barMobile} />
+            <img className="visual__bar" src={bar} alt="" draggable={false} />
+          </picture>
           <img
             className="visual__background"
             src={background}
             alt=""
             draggable={false}
           />
-          <img
-            className="visual__artwork"
-            src={mainArtwork}
-            alt="FORTUNA 812"
-            draggable={false}
-          />
+          <picture>
+            <source media="(max-width: 700px)" srcSet={mainArtworkMobile} />
+            <img
+              className="visual__artwork"
+              src={mainArtwork}
+              alt="FORTUNA 812"
+              draggable={false}
+            />
+          </picture>
           <div
-            className={`visual__letter-glows${bootVisible ? '' : ' is-active'}`}
+            className="visual__letter-glows"
             aria-hidden="true"
+            ref={letterGlowsRef}
           >
-            {fortunaLetters.map(({ letter, parts }) => (
+            {fortunaLetters.map(({ letter, parts, restParts }) => (
               <svg
                 className={`visual__letter-glow visual__letter-glow--${letter}`}
                 viewBox="0 0 1183 1330"
                 focusable="false"
                 key={letter}
               >
-                {parts.map((part) => (
-                  <use
-                    href={`${mainArtwork}#fortuna-${part}`}
-                    key={part}
-                  />
-                ))}
+                <defs>
+                  <filter
+                    id={`fortuna-color-${letter}`}
+                    x="-50%"
+                    y="-50%"
+                    width="200%"
+                    height="200%"
+                  >
+                    <feFlood floodColor="#bda2d3" result="highlight-color" />
+                    <feComposite
+                      in="highlight-color"
+                      in2="SourceAlpha"
+                      operator="in"
+                    />
+                  </filter>
+                  <clipPath
+                    id={`fortuna-top-${letter}`}
+                    clipPathUnits="userSpaceOnUse"
+                  >
+                    <rect width="1183" height="252" />
+                  </clipPath>
+                  {restParts && (
+                    <clipPath
+                      id={`fortuna-rest-${letter}`}
+                      clipPathUnits="userSpaceOnUse"
+                    >
+                      <rect y="252" width="1183" height="1078" />
+                    </clipPath>
+                  )}
+                </defs>
+                <g
+                  className="visual__letter-top"
+                  clipPath={`url(#fortuna-top-${letter})`}
+                  filter={`url(#fortuna-color-${letter})`}
+                >
+                  {parts.map((part) => (
+                    <use
+                      href={`${mainArtwork}#fortuna-${part}`}
+                      key={part}
+                    />
+                  ))}
+                </g>
+                {restParts && (
+                  <g
+                    className="visual__letter-rest"
+                    clipPath={`url(#fortuna-rest-${letter})`}
+                    filter={`url(#fortuna-color-${letter})`}
+                  >
+                    {restParts.map((part) => (
+                      <use
+                        href={`${mainArtwork}#fortuna-${part}`}
+                        key={part}
+                      />
+                    ))}
+                  </g>
+                )}
               </svg>
             ))}
           </div>
@@ -445,6 +572,24 @@ function App() {
             rel="noreferrer"
           >
             <img src={partnerRight} alt="812" draggable={false} />
+          </a>
+          <a
+            className="partners__memories"
+            href={`${import.meta.env.BASE_URL}memories/`}
+          >
+            MEMORIES
+          </a>
+          <a
+            className="partner-mark partners__oniwi"
+            href="https://t.me/oniwi"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src={oniwi}
+              alt="Produced by Oniwi"
+              draggable={false}
+            />
           </a>
         </footer>
       </div>

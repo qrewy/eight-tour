@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/eightour/assets/:path*",
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/eightour",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/eightour/:path*",
+      "destination": "/index.html"
+    }
+  ]
+}
