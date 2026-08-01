@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './App.css'
 
 import bar from './assets/svg/82bar.svg'
@@ -15,13 +16,30 @@ import atlanta from './assets/figma/atlanta.svg'
 import partnerRight from './assets/figma/partner-right-round.svg'
 import citiesData from './assets/cities.json'
 
-const cities = citiesData.cities.map((item) => ({
-  city: item.city,
-  date: item.date,
-  bookingUrl: item.links.find(
+const cities = citiesData.cities.map((item) => {
+  const telegramBookingUrl = item.links.find(
     (link) => link.platform === 'telegram' && link.label !== 'Чат',
-  )?.url,
-}))
+  )?.url
+  const vkBookingUrl = item.links.find(
+    (link) => link.platform === 'vk' && link.label !== 'Группа',
+  )?.url
+
+  return {
+    city: item.city,
+    date: item.date,
+    bookingUrl: telegramBookingUrl,
+    telegramBookingUrl,
+    vkBookingUrl,
+    telegramCommunityUrl:
+      item.links.find(
+        (link) => link.platform === 'telegram' && link.label === 'Чат',
+      )?.url ?? telegramBookingUrl,
+    vkCommunityUrl:
+      item.links.find(
+        (link) => link.platform === 'vk' && link.label === 'Группа',
+      )?.url ?? vkBookingUrl,
+  }
+})
 
 const featuredNames = new Set(['МОСКВА', 'САНКТ-ПЕТЕРБУРГ'])
 const regularCities = cities.filter(({ city }) => !featuredNames.has(city))
@@ -132,6 +150,103 @@ function Marquee({ position }) {
   )
 }
 
+function DesktopBookingMenu({ city, links, align = 'left' }) {
+  const [open, setOpen] = useState(false)
+  const menuRef = useRef(null)
+
+  useEffect(() => {
+    if (!open) return undefined
+
+    const handlePointerDown = (event) => {
+      if (!menuRef.current?.contains(event.target)) setOpen(false)
+    }
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [open])
+
+  return (
+    <div
+      className={`desktop-booking-menu desktop-booking-menu--${align}`}
+      ref={menuRef}
+    >
+      <button
+        className="desktop-booking-menu__trigger"
+        type="button"
+        aria-expanded={open}
+        onClick={() => setOpen((current) => !current)}
+      >
+        БРОНЬ
+      </button>
+
+      <div
+        className={`desktop-booking-menu__panel${
+          open ? ' desktop-booking-menu__panel--open' : ''
+        }`}
+        aria-hidden={!open}
+      >
+        <div className="desktop-booking-menu__header">
+          <strong>{city}</strong>
+        </div>
+
+        <div
+          className={`desktop-booking-menu__tickets${
+            links.vkBookingUrl
+              ? ''
+              : ' desktop-booking-menu__tickets--single'
+          }`}
+        >
+          {links.vkBookingUrl && (
+            <a
+              href={links.vkBookingUrl}
+              target="_blank"
+              rel="noreferrer"
+              tabIndex={open ? 0 : -1}
+            >
+              БРОНЬ ВК
+            </a>
+          )}
+          <a
+            href={links.telegramBookingUrl}
+            target="_blank"
+            rel="noreferrer"
+            tabIndex={open ? 0 : -1}
+          >
+            БРОНЬ ТГ
+          </a>
+        </div>
+
+        <div className="desktop-booking-menu__socials">
+          <a
+            href={links.vkCommunityUrl}
+            target="_blank"
+            rel="noreferrer"
+            tabIndex={open ? 0 : -1}
+          >
+            <span>ВК ЧАТ</span>
+          </a>
+          <a
+            href={links.telegramCommunityUrl}
+            target="_blank"
+            rel="noreferrer"
+            tabIndex={open ? 0 : -1}
+          >
+            <span>ТГ ЧАТ</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function CitiesColumn({ items, side }) {
   return (
     <ol className={`dates dates--${side}`}>
@@ -187,19 +302,13 @@ function FeaturedCities() {
 function MobileCities() {
   return (
     <ol className="mobile-cities">
-      {mobileCities.map(({ city, date, bookingUrl }) => (
-        <li className="mobile-city" key={`${city}-${date}`}>
-          <a
-            className="mobile-city__link"
-            href={bookingUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Забронировать билет: ${city}, ${date} — Telegram`}
-          >
-            <time>{date}</time>
-            <span className="city-name">{city}</span>
-            <span className="booking-label">БРОНЬ</span>
-          </a>
+      {mobileCities.map((item) => (
+        <li className="mobile-city" key={`${item.city}-${item.date}`}>
+          <div className="mobile-city__link">
+            <time>{item.date}</time>
+            <span className="city-name">{item.city}</span>
+            <DesktopBookingMenu city={item.city} links={item} align="center" />
+          </div>
         </li>
       ))}
     </ol>
@@ -573,12 +682,17 @@ function App() {
           >
             <img src={partnerRight} alt="812" draggable={false} />
           </a>
-          <a
+          <Link
             className="partners__memories"
-            href={`${import.meta.env.BASE_URL}memories/`}
+            to="/memories/"
+            aria-label="Memories"
           >
-            MEMORIES
-          </a>
+            {'MEMORIES'.split('').map((letter, index) => (
+              <span key={`${letter}-${index}`} aria-hidden="true">
+                {letter}
+              </span>
+            ))}
+          </Link>
           <a
             className="partner-mark partners__oniwi"
             href="https://t.me/oniwi"

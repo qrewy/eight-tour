@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import './Memories.css'
 
 import citiesData from './assets/cities.json'
@@ -116,7 +117,6 @@ function AsciiOutput({ startOrder = 1 }) {
 }
 
 function MemoriesIndex() {
-  const memoriesBase = `${import.meta.env.BASE_URL}memories/`
   const treeStartOrder = asciiPrintLength + 1
 
   return (
@@ -165,7 +165,7 @@ function MemoriesIndex() {
                   </div>
                   <div className="memory-tree__action">
                     <span>{lastCity ? '        └──' : '    │   └──'}</span>
-                    <a href={`${memoriesBase}${slug}/`}>[ ПРОСМОТРЕТЬ ]</a>
+                    <Link to={`/memories/${slug}/`}>[ ПРОСМОТРЕТЬ ]</Link>
                   </div>
                   {!lastCity && (
                     <div className="memory-tree__spacer" aria-hidden="true">
@@ -179,19 +179,18 @@ function MemoriesIndex() {
         </ol>
       </section>
 
-      <a
+      <Link
         className="terminal-back terminal-print"
         style={{ '--print-order': treeStartOrder + cities.length + 3 }}
-        href={import.meta.env.BASE_URL}
+        to="/"
       >
         fortuna@812:~/memories$ cd ../tour
-      </a>
+      </Link>
     </div>
   )
 }
 
 function MemoryCity({ city }) {
-  const memoriesBase = `${import.meta.env.BASE_URL}memories/`
   const directoryLines = [
     'FORTUNA_812_TOUR/',
     '└── CITIES/',
@@ -241,14 +240,16 @@ function MemoryCity({ city }) {
           '--print-order': asciiPrintLength + directoryLines.length + 3,
         }}
       >
-        <a href={memoriesBase}>fortuna@812:~/memories$ cd ../cities</a>
-        <a href={import.meta.env.BASE_URL}>fortuna@812:~$ cd tour</a>
+        <Link to="/memories/">fortuna@812:~/memories$ cd ../cities</Link>
+        <Link to="/">fortuna@812:~$ cd tour</Link>
       </div>
     </div>
   )
 }
 
-function Memories({ citySlug }) {
+function Memories({ citySlug: providedCitySlug }) {
+  const { citySlug: routeCitySlug } = useParams()
+  const citySlug = providedCitySlug ?? routeCitySlug
   const selectedCity = citySlug
     ? cities.find(({ slug }) => slug === citySlug)
     : null
@@ -282,9 +283,9 @@ function Memories({ citySlug }) {
               style={{ '--print-order': asciiPrintLength + 2 }}
             >
               <p>[ DIRECTORY NOT FOUND ]</p>
-              <a href={`${import.meta.env.BASE_URL}memories/`}>
+              <Link to="/memories/">
                 fortuna@812:~/memories$ cd ../cities
-              </a>
+              </Link>
             </div>
           </section>
         ) : selectedCity ? (

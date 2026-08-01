@@ -1,24 +1,23 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import Memories from './Memories.jsx'
 
-const pathname = window.location.pathname.replace(/\/+$/, '') || '/'
-const basePath = import.meta.env.BASE_URL.replace(/\/+$/, '')
-const routePath =
-  basePath && pathname.startsWith(basePath)
-    ? pathname.slice(basePath.length) || '/'
-    : pathname
-const memoriesMatch = routePath.match(/^\/memories(?:\/([^/]+))?$/)
-const currentPage = memoriesMatch ? (
-  <Memories citySlug={memoriesMatch[1]} />
-) : (
-  <App />
-)
+const basename = /^\/eightour(?:\/|$)/.test(window.location.pathname)
+  ? '/eightour'
+  : '/'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {currentPage}
+    <BrowserRouter basename={basename}>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/memories" element={<Memories />} />
+        <Route path="/memories/:citySlug/*" element={<Memories />} />
+        <Route path="*" element={<App />} />
+      </Routes>
+    </BrowserRouter>
   </StrictMode>,
 )

@@ -280,6 +280,20 @@ img {
   inset: 0;
 }
 
+.tour:has(.desktop-booking-menu__panel--open) {
+  z-index: 4000;
+}
+
+.dates:has(.desktop-booking-menu__panel--open),
+.featured-cities:has(.desktop-booking-menu__panel--open),
+.mobile-cities:has(.desktop-booking-menu__panel--open) {
+  z-index: 200;
+}
+
+.poster__canvas:has(.desktop-booking-menu__panel--open) {
+  overflow: visible;
+}
+
 .visual__bar {
   position: absolute;
   z-index: 2;
@@ -419,6 +433,10 @@ img {
   justify-self: end;
 }
 
+.dates--right .desktop-booking-menu {
+  justify-self: end;
+}
+
 .dates--right .city-name {
   justify-self: start;
   text-align: left;
@@ -441,10 +459,189 @@ img {
   text-align: left;
 }
 
+.dates--left .desktop-booking-menu {
+  order: 3;
+  justify-self: start;
+}
+
 .booking-label {
   color: #9e4ed3;
   line-height: 1.05;
   transition: color 180ms ease;
+}
+
+.desktop-booking-menu {
+  position: relative;
+  z-index: 70;
+  color: #9e4ed3;
+  line-height: 1.05;
+}
+
+.dates li:has(.desktop-booking-menu__panel--open),
+.featured-city:has(.desktop-booking-menu__panel--open) {
+  position: relative;
+  z-index: 100;
+}
+
+.desktop-booking-menu__trigger {
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.desktop-booking-menu__trigger:hover,
+.desktop-booking-menu__trigger[aria-expanded='true'] {
+  color: #d78cff;
+}
+
+.desktop-booking-menu__trigger:focus-visible {
+  outline: 2px solid #9e4ed3;
+  outline-offset: 3px;
+}
+
+.desktop-booking-menu__panel {
+  --panel-x: 0%;
+
+  position: absolute;
+  top: calc(100% + 1.1svh);
+  z-index: 80;
+  width: clamp(250px, 18vw, 310px);
+  padding: 0;
+  overflow: hidden;
+  color: #f2f2f2;
+  font-family: 'Trajan', 'Times New Roman', serif;
+  font-size: clamp(12px, 0.78vw, 15px);
+  line-height: 1.15;
+  text-align: left;
+  background: #070009;
+  border: 1px solid #542277;
+  border-top: 3px solid #a653d6;
+  border-radius: 0;
+  box-shadow: 7px 7px 0 #190821;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(var(--panel-x), -5px);
+  transform-origin: top center;
+  pointer-events: none;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 0s linear 180ms;
+}
+
+.desktop-booking-menu__panel--open {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(var(--panel-x), 0);
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+.desktop-booking-menu--left .desktop-booking-menu__panel {
+  left: 0;
+}
+
+.desktop-booking-menu--right .desktop-booking-menu__panel {
+  right: 0;
+}
+
+.desktop-booking-menu--center .desktop-booking-menu__panel {
+  --panel-x: -50%;
+
+  left: 50%;
+}
+
+.desktop-booking-menu__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 14px 10px;
+  text-align: center;
+  background: #0d0312;
+  border-bottom: 1px solid #542277;
+}
+
+.desktop-booking-menu__header strong {
+  overflow: hidden;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 0.045em;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.desktop-booking-menu__socials,
+.desktop-booking-menu__tickets {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+}
+
+.desktop-booking-menu__socials {
+  margin: 0;
+}
+
+.desktop-booking-menu__socials a,
+.desktop-booking-menu__tickets a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+  letter-spacing: 0.025em;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+
+.desktop-booking-menu__socials a {
+  padding: 11px 8px 10px;
+  color: #b98acb;
+  background: #070009;
+}
+
+.desktop-booking-menu__tickets {
+  margin: 0;
+  border-bottom: 1px solid #542277;
+}
+
+.desktop-booking-menu__tickets--single {
+  grid-template-columns: 1fr;
+}
+
+.desktop-booking-menu__tickets a {
+  padding: 12px 8px 11px;
+  color: #fff;
+  background: #321345;
+}
+
+.desktop-booking-menu__socials a + a,
+.desktop-booking-menu__tickets a + a {
+  border-left: 1px solid #542277;
+}
+
+.desktop-booking-menu__tickets a:hover {
+  color: #fff;
+  background: #713394;
+}
+
+.desktop-booking-menu__socials a:hover {
+  color: #fff;
+  background: #1b0826;
+}
+
+.desktop-booking-menu__socials a:focus-visible,
+.desktop-booking-menu__tickets a:focus-visible {
+  outline: 2px solid #d78cff;
+  outline-offset: 2px;
 }
 
 .city-link .city-name,
@@ -495,6 +692,11 @@ img {
 }
 
 .featured-city__link .booking-label {
+  justify-self: center;
+  color: inherit;
+}
+
+.featured-city__link .desktop-booking-menu {
   justify-self: center;
   color: inherit;
 }
@@ -602,6 +804,8 @@ img {
 .partners__memories {
   position: absolute;
   z-index: 21;
+  display: flex;
+  justify-content: space-between;
   top: 190.2svh;
   left: 50%;
   width: 14vw;
@@ -609,7 +813,7 @@ img {
   color: transparent;
   font-family: 'Trajan', 'Times New Roman', serif;
   font-size: 1.85vw;
-  letter-spacing: 0.025em;
+  letter-spacing: 0;
   line-height: 0.94;
   text-align: center;
   text-decoration: none;
@@ -647,11 +851,11 @@ img {
   }
 
   .poster__canvas {
-    height: 710vw;
+    height: 979vw;
   }
 
   .snap-point--poster {
-    height: 710vw;
+    height: 979vw;
   }
 
   .snap-point--cities {
@@ -667,7 +871,7 @@ img {
   }
 
   .marquee--bottom {
-    top: 690vw;
+    top: 959vw;
   }
 
   .marquee__track {
@@ -740,8 +944,13 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 0 7.2vw;
+    margin: 0 0 10.8vw;
     line-height: 1.1;
+  }
+
+  .mobile-city:has(.desktop-booking-menu__panel--open) {
+    position: relative;
+    z-index: 100;
   }
 
   .mobile-city__link {
@@ -753,75 +962,75 @@ img {
   }
 
   .mobile-city time {
-    margin-bottom: 0.4vw;
+    margin-bottom: 0.6vw;
     color: #f2f2f2;
-    font-size: 3.3vw;
-    transition: color 180ms ease;
+    font-size: 4.95vw;
   }
 
   .mobile-city .city-name {
-    margin-bottom: 2.7vw;
+    margin-bottom: 4.05vw;
     color: #9e4ed3;
-    font-size: 4vw;
+    font-size: 6vw;
     white-space: nowrap;
-    transition: color 180ms ease;
   }
 
-  .mobile-city .booking-label {
+  .mobile-city .desktop-booking-menu {
     color: #f2f2f2;
-    font-size: 3.5vw;
-    line-height: 1.15;
-    transition: color 180ms ease;
+    font-size: 5.25vw;
   }
 
-  .mobile-city__link:hover time,
-  .mobile-city__link:hover .city-name,
-  .mobile-city__link:hover .booking-label {
-    color: #d78cff;
+  .mobile-city .desktop-booking-menu__panel {
+    top: auto;
+    bottom: calc(100% + 2.2vw);
+    width: min(78vw, 310px);
+    font-size: clamp(12px, 3.2vw, 15px);
+    transform: translate(var(--panel-x), 5px);
+    transform-origin: bottom center;
   }
 
-  .mobile-city__link:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 4px;
+  .mobile-city .desktop-booking-menu__panel--open {
+    transform: translate(var(--panel-x), 0);
   }
 
   .partners__fleek {
-    top: 699vw;
+    top: 968vw;
     left: 3.6364vw;
     width: 8.7223vw;
     height: 10.2911vw;
   }
 
   .partners__left {
-    top: 699vw;
+    top: 968vw;
     left: 17.7273vw;
     width: 11.0131vw;
     height: 10.6313vw;
   }
 
   .partners__atlanta {
-    top: 702.6vw;
+    top: 971.6vw;
     left: 68.6364vw;
     width: 13.4636vw;
     height: 3.9842vw;
   }
 
   .partners__right {
-    top: 699vw;
+    top: 968vw;
     left: 84.5451vw;
     width: 10.872vw;
     height: 10.7257vw;
   }
 
   .partners__oniwi {
-    top: 707vw;
-    width: 32vw;
+    top: 956vw;
+    width: 48vw;
   }
 
   .partners__memories {
-    top: 697.5vw;
+    display: block;
+    top: 967.2vw;
     width: 32vw;
     font-size: 4.2vw;
+    letter-spacing: 0.025em;
   }
 }
 
@@ -926,4 +1135,7 @@ img {
     animation: none;
   }
 
+  .desktop-booking-menu__panel {
+    transition: none;
+  }
 }

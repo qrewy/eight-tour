@@ -1,5 +1,4 @@
 {
-  "source": "Вставленный текст(2).txt",
   "cities_count": 24,
   "cities": [
     {
@@ -580,7 +579,7 @@
     },
     {
       "city": "РОСТОВ",
-      "date": "24.12",
+      "date": "25.12",
       "links": [
         {
           "label": "Бронь",
@@ -610,7 +609,7 @@
     },
     {
       "city": "КРАСНОДАР",
-      "date": "25.12",
+      "date": "26.12",
       "links": [
         {
           "label": "Бронь",
@@ -638,18 +637,12 @@
         }
       ]
     },
-    {
-      "city": "САРАТОВ",
-      "date": "30.01",
-      "links": [
-        {
-          "label": "Бронь",
-          "text": "Бронь",
-          "platform": "telegram",
-          "url": "https://t.me/fortuna812tourbot?start=saratov"
-        },
-        {
-          "label": "Бронь",
+  {
+    "city": "САРАТОВ",
+    "date": "30.01",
+    "links": [
+      {
+        "label": "Бронь",
           "text": "Бронь",
           "platform": "telegram",
           "url": "https://t.me/fortuna812tourbot?start=saratov"
@@ -745,10 +738,6 @@
     {
       "label": "812",
       "url": "https://t.me/eightofeight"
-    },
-    {
-      "label": "dev by sn",
-      "url": "https://t.me/sznsn"
     }
   ]
 }
