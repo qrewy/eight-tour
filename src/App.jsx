@@ -6,8 +6,6 @@ import bar from './assets/svg/82bar.svg'
 import barMobile from './assets/svg/82bar-mobile.svg'
 import mainArtwork from './assets/svg/main.svg'
 import mainArtworkMobile from './assets/svg/main-mobile.svg'
-import telegramLogo from './assets/svg/logo_tg.svg'
-import vkLogo from './assets/svg/logo vk.svg'
 import oniwi from './assets/svg/oniwi.svg'
 import round from './assets/svg/round.svg'
 import background from './assets/img/bg.png'
@@ -17,14 +15,6 @@ import partnerLeft from './assets/figma/partner-left-round.svg'
 import atlanta from './assets/figma/atlanta.svg'
 import partnerRight from './assets/figma/partner-right-round.svg'
 import citiesData from './assets/cities.json'
-
-const telegramOnlyBookingCities = new Set([
-  'САРАТОВ',
-  'КРАСНОДАР',
-  'РОСТОВ',
-  'ТЮМЕНЬ',
-  'ИРКУТСК',
-])
 
 const cities = citiesData.cities.map((item) => {
   const telegramBookingUrl = item.links.find(
@@ -39,9 +29,7 @@ const cities = citiesData.cities.map((item) => {
     date: item.date,
     bookingUrl: telegramBookingUrl,
     telegramBookingUrl,
-    vkBookingUrl: telegramOnlyBookingCities.has(item.city)
-      ? telegramBookingUrl
-      : vkBookingUrl,
+    vkBookingUrl,
     telegramCommunityUrl:
       item.links.find(
         (link) => link.platform === 'telegram' && link.label === 'Чат',
@@ -259,43 +247,6 @@ function DesktopBookingMenu({ city, links, align = 'left' }) {
   )
 }
 
-function DesktopCityActions({ city, links }) {
-  return (
-    <div className="desktop-city-actions">
-      <div className="desktop-city-actions__socials">
-        <a
-          href={links.telegramCommunityUrl}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`Telegram-чат: ${city}`}
-        >
-          <img src={telegramLogo} alt="" draggable={false} />
-        </a>
-        <a
-          href={links.vkCommunityUrl}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`VK-чат: ${city}`}
-        >
-          <img src={vkLogo} alt="" draggable={false} />
-        </a>
-      </div>
-      <div className="desktop-city-actions__booking">
-        <a href={links.vkBookingUrl} target="_blank" rel="noreferrer">
-          БРОНЬ ВК
-        </a>
-        <a
-          href={links.telegramBookingUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          БРОНЬ ТГ
-        </a>
-      </div>
-    </div>
-  )
-}
-
 function CitiesColumn({ items, side }) {
   return (
     <ol className={`dates dates--${side}`}>
@@ -309,13 +260,15 @@ function CitiesColumn({ items, side }) {
             '--v-offset-mobile-negative': `${index * -0.48}vw`,
           }}
         >
-          <div className="city-heading">
+          <div className="city-link">
+            <DesktopBookingMenu
+              city={item.city}
+              links={item}
+              align={side === 'left' ? 'right' : 'left'}
+            />
             <span className="city-name">{item.city}</span>
-            <time className={item.date === '21-22.10' ? 'date--range' : undefined}>
-              {item.date}
-            </time>
+            <time>{item.date}</time>
           </div>
-          <DesktopCityActions city={item.city} links={item} />
         </li>
       ))}
     </ol>
@@ -326,12 +279,19 @@ function FeaturedCities() {
   return (
     <div className="featured-cities">
       {featuredCities.map((item) => (
-        <div className="featured-city" key={`${item.city}-${item.date}`}>
-          <div className="featured-city__heading">
-            <time>{item.date}</time>
+        <div
+          className="featured-city"
+          key={`${item.city}-${item.date}`}
+        >
+          <div className="featured-city__link">
+            <DesktopBookingMenu
+              city={item.city}
+              links={item}
+              align="center"
+            />
             <span className="city-name">{item.city}</span>
+            <time>{item.date}</time>
           </div>
-          <DesktopCityActions city={item.city} links={item} />
         </div>
       ))}
     </div>
@@ -669,7 +629,7 @@ function App() {
             />
           </div>
         </section>
-{/*
+
         <button
           className="scroll-cue"
           type="button"
@@ -677,7 +637,7 @@ function App() {
           onClick={() => moveToScreenRef.current(1)}
         >
           листай 8низ
-        </button> */}
+        </button>
 
         <section className="tour" aria-label="Даты тура">
           <CitiesColumn items={regularCities.slice(0, middleIndex)} side="left" />
