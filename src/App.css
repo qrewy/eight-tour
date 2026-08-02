@@ -380,7 +380,7 @@ img {
   position: absolute;
   z-index: 20;
   top: 106svh;
-  width: 32vw;
+  width: 30vw;
   margin: 0;
   padding: 0;
   color: #9e4ed3;
@@ -664,162 +664,12 @@ img {
   color: #f2f2f2;
 }
 
-.dates li:has(.city-heading) {
-  display: grid;
-  grid-template-columns: max-content max-content;
-  grid-template-rows: auto auto;
-  column-gap: clamp(80px, 9vw, 180px);
-  row-gap: 0.08svh;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.65svh;
-  overflow: visible;
-  font-size: min(1.5vw, 2.45svh);
-}
-
-.dates .city-heading,
-.dates .desktop-city-actions {
-  display: contents;
-}
-
-.dates .city-heading time {
-  grid-row: 1;
-  justify-self: center;
-  text-align: center;
-}
-
-.dates .city-heading .city-name {
-  grid-row: 1;
-  justify-self: end;
-  font-size: 1em;
-  text-align: right;
-}
-
-.dates--left .city-heading time,
-.dates--left .desktop-city-actions__socials {
-  grid-column: 1;
-}
-
-.dates--left .city-heading .date--range {
-  transform: translateX(.5vw);
-}
-
-.dates--left .city-heading .city-name,
-.dates--left .desktop-city-actions__booking {
-  grid-column: 2;
-}
-
-.dates--right .city-heading .city-name,
-.dates--right .desktop-city-actions__booking {
-  grid-column: 1;
-  justify-self: start;
-}
-
-.dates--right .city-heading time,
-.dates--right .desktop-city-actions__socials {
-  grid-column: 2;
-}
-
-.desktop-city-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 0;
-  padding: 0.13svh 0.65vw 0.24svh;
-  font-size: 0.72em;
-  line-height: 1;
-}
-
-.dates .desktop-city-actions {
-  font-size: 1em;
-}
-
-.dates .desktop-city-actions__socials {
-  font-size: 0.72em;
-}
-
-.dates .desktop-city-actions__booking {
-  font-size: 1em;
-}
-
-.dates--left .desktop-city-actions__socials {
-  grid-row: 2;
-  justify-self: center;
-}
-
-.dates--left .desktop-city-actions__booking {
-  grid-row: 2;
-  justify-self: end;
-}
-
-.dates--right .desktop-city-actions__socials {
-  grid-row: 2;
-  justify-self: center;
-}
-
-.dates--right .desktop-city-actions__booking {
-  grid-row: 2;
-  justify-self: start;
-}
-
-.desktop-city-actions__socials,
-.desktop-city-actions__booking {
-  display: flex;
-  align-items: center;
-}
-
-.desktop-city-actions__socials {
-  gap: 0.42em;
-}
-
-.desktop-city-actions__socials a {
-  display: block;
-  width: 1.05em;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  transition: opacity 160ms ease;
-}
-
-.desktop-city-actions__socials img {
-  width: 100%;
-  height: 100%;
-  filter: invert(1);
-}
-
-.desktop-city-actions__booking {
-  gap: 0.85em;
-  white-space: nowrap;
-}
-
-.desktop-city-actions__booking a {
-  color: #9e4ed3;
-  text-decoration: none;
-  transition: color 160ms ease;
-}
-
-.desktop-city-actions__socials a:hover {
-  opacity: 0.72;
-}
-
-.desktop-city-actions__booking a:hover {
-  color: #d78cff;
-}
-
-.desktop-city-actions__socials a:focus-visible,
-.desktop-city-actions__booking a:focus-visible {
-  outline: 2px solid #9e4ed3;
-  outline-offset: 3px;
-}
-
 .featured-cities {
   position: absolute;
   z-index: 20;
-  top: 172svh;
+  top: 158svh;
   left: 50%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: min(68vw, 130svh);
+  width: min(47vw, 90svh);
   transform: translateX(-50%);
   color: #f2f2f2;
   font-family: 'Trajan', 'Times New Roman', serif;
@@ -827,8 +677,7 @@ img {
 }
 
 .featured-city {
-  width: 47%;
-  margin: 0;
+  margin-bottom: 1.1svh;
   text-align: center;
   white-space: nowrap;
 }
@@ -866,43 +715,6 @@ img {
 .featured-city__link:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 3px;
-}
-
-.featured-city__heading {
-  display: grid;
-  grid-template-columns: minmax(0, 32fr) minmax(0, 68fr);
-  align-items: baseline;
-  gap: 0.9vw;
-}
-
-.featured-city__heading time {
-  justify-self: end;
-  color: #f2f2f2;
-  text-align: right;
-}
-
-.featured-city__heading .city-name {
-  justify-self: start;
-  color: #f2f2f2;
-  text-align: left;
-}
-
-.featured-city .desktop-city-actions {
-  display: grid;
-  grid-template-columns: minmax(0, 32fr) minmax(0, 68fr);
-  gap: 0.9vw;
-  width: 100%;
-  margin-top: 0.15em;
-}
-
-.featured-city .desktop-city-actions__socials {
-  grid-column: 1;
-  justify-self: end;
-}
-
-.featured-city .desktop-city-actions__booking {
-  grid-column: 2;
-  justify-self: start;
 }
 
 .mobile-cities {
