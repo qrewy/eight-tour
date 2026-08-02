@@ -630,14 +630,14 @@ function App() {
           </div>
         </section>
 
-        <button
+        {/* <button
           className="scroll-cue"
           type="button"
           aria-label="Перейти к списку городов"
           onClick={() => moveToScreenRef.current(1)}
         >
           листай 8низ
-        </button>
+        </button> */}
 
         <section className="tour" aria-label="Даты тура">
           <CitiesColumn items={regularCities.slice(0, middleIndex)} side="left" />
