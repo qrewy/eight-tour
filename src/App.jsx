@@ -250,9 +250,9 @@ function DesktopBookingMenu({ city, links, align = 'left' }) {
 function CitiesColumn({ items, side }) {
   return (
     <ol className={`dates dates--${side}`}>
-      {items.map(({ city, date, bookingUrl }, index) => (
+      {items.map((item, index) => (
         <li
-          key={`${city}-${date}`}
+          key={`${item.city}-${item.date}`}
           style={{
             '--v-offset': `${index * 1.15}vw`,
             '--v-offset-negative': `${index * -1.15}vw`,
@@ -260,17 +260,15 @@ function CitiesColumn({ items, side }) {
             '--v-offset-mobile-negative': `${index * -0.48}vw`,
           }}
         >
-          <a
-            className="city-link"
-            href={bookingUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Забронировать билет: ${city}, ${date} — Telegram`}
-          >
-            <span className="booking-label">БРОНЬ</span>
-            <span className="city-name">{city}</span>
-            <time>{date}</time>
-          </a>
+          <div className="city-link">
+            <DesktopBookingMenu
+              city={item.city}
+              links={item}
+              align={side === 'left' ? 'right' : 'left'}
+            />
+            <span className="city-name">{item.city}</span>
+            <time>{item.date}</time>
+          </div>
         </li>
       ))}
     </ol>
@@ -280,19 +278,20 @@ function CitiesColumn({ items, side }) {
 function FeaturedCities() {
   return (
     <div className="featured-cities">
-      {featuredCities.map(({ city, date, bookingUrl }) => (
-        <div className="featured-city" key={`${city}-${date}`}>
-          <a
-            className="featured-city__link"
-            href={bookingUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Забронировать билет: ${city}, ${date} — Telegram`}
-          >
-            <span className="booking-label">БРОНЬ</span>
-            <span className="city-name">{city}</span>
-            <time>{date}</time>
-          </a>
+      {featuredCities.map((item) => (
+        <div
+          className="featured-city"
+          key={`${item.city}-${item.date}`}
+        >
+          <div className="featured-city__link">
+            <DesktopBookingMenu
+              city={item.city}
+              links={item}
+              align="center"
+            />
+            <span className="city-name">{item.city}</span>
+            <time>{item.date}</time>
+          </div>
         </div>
       ))}
     </div>
